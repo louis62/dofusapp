@@ -1,6 +1,6 @@
 {
-  "name": "TODO",
-  "description": "TODO",
+  "name": "DofusApp",
+  "description": "Gestion de drago",
   "version": "0.0.1",
   "scripts": {
     "start": "sapper dev",
@@ -11,15 +11,19 @@
     "test": "run-p --race dev cy:run"
   },
   "dependencies": {
+    "@apollo/client": "^3.2.7",
     "compression": "^1.7.1",
+    "cross-fetch": "^3.0.6",
+    "graphql": "^15.5.0",
     "polka": "next",
     "sirv": "^0.4.0"
   },
   "devDependencies": {
     "npm-run-all": "^4.1.5",
-    "sapper": "^0.27.0",
-    "svelte": "^3.0.0",
+    "sapper": "0.28.10",
+    "svelte": "^3.29.0",
     "svelte-loader": "^2.9.0",
+    "svelte-apollo": "^0.4.0",
     "webpack": "^4.7.0"
   }
 }
