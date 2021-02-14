@@ -9,7 +9,7 @@
 
 <div class="bg">
     <div class="wrapper">
-        <img alt='Borat' src='logo-512.png'>
+        <img alt='Logo' src='logo-512.png'>
         <div class="form__wrapper">
             <LoginForm />
         </div>
@@ -27,11 +27,18 @@
         align-items: center;
         .wrapper{
             flex-wrap: wrap;
-            flex-basis: 300px;
+            max-width: 80vw;
             .form__wrapper{
-                margin-top: -3em;
                 background: $secondary;
+                border-radius: 20px;
+                margin-top: -3em;
+                background: #33425b;
+                box-shadow:  5px 5px 10px #303e56,
+                            -5px -5px 10px #364660;
                 padding: 1em;
+            }
+            img {
+                max-width: 80vw;
             }
         }
     }
