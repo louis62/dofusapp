@@ -3,22 +3,16 @@
 	import client from '../lib/apollo';
 	import { setClient } from "svelte-apollo";
 	setClient(client);
-	export let segment;
-  </script>
 
-<style>
-	main {
-		position: relative;
-		max-width: 56em;
-		background-color: white;
-		padding: 2em;
-		margin: 0 auto;
-		box-sizing: border-box;
-	}
+	export let segment;
+</script>
+
+<style lang="scss">
+	@import '.././theme/global.scss';
 </style>
 
-<Nav {segment}/>
+<!-- <Nav {segment}/> -->
 
 <main>
-	<slot></slot>
+	<slot {segment} ></slot>
 </main>
