@@ -1,59 +1,32 @@
 <script context="module">
   export async function preload(page, session) {
-    return this.redirect(302, 'login');
+    const { token } = session;
+
+    if (!token) {
+      return this.redirect(302, "login");
+    }
+
+    return;
   }
 </script>
 
-<style>
-  h1,
-  figure,
-  p {
-    text-align: center;
-    margin: 0 auto;
-  }
+<script>
+import { query, getClient } from 'svelte-apollo';
+import { ME } from '../queries';
+getClient()
+const me = query(ME);
 
-  h1 {
-    font-size: 2.8em;
-    text-transform: uppercase;
-    font-weight: 700;
-    margin: 0 0 0.5em 0;
-  }
+</script>
 
-  figure {
-    margin: 0 0 1em 0;
-  }
-
-  img {
-    width: 100%;
-    max-width: 400px;
-    margin: 0 0 1em 0;
-  }
-
-  p {
-    margin: 1em auto;
-  }
-
-  @media (min-width: 480px) {
-    h1 {
-      font-size: 4em;
-    }
-  }
-</style>
 
 <svelte:head>
   <title>Dofus App</title>
 </svelte:head>
 
-<h1>Great success!</h1>
-
-
-<figure>
-  <img alt="Borat" src="great-success.png" />
-  <figcaption>HIGH FIVE!</figcaption>
-</figure>
-
-<p>
-  <strong>
-    Try editing this file (src/routes/index.svelte) to test live reloading.
-  </strong>
-</p>
+{#if $me.loading}
+  Loading...
+{:else if $me.error}
+  Error: {$me.error.message}
+{:else}
+  {$me.name}
+{/if}

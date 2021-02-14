@@ -2,11 +2,9 @@
     import Textfield from '@smui/textfield';
     import CommonIcon from '@smui/common/Icon';
     import Snackbar, {Actions, Label} from '@smui/snackbar';
-    import { mutation } from 'svelte-apollo';
     import Fab from '@smui/fab';
-    import { goto } from '@sapper/app';
-    import { SIGN_IN } from "../queries";
-    const signIn = mutation(SIGN_IN)
+    import { goto, stores } from "@sapper/app";
+    const { session } = stores();
 
     let mySnackbar;
     export let errorMessage = '';
@@ -14,15 +12,25 @@
     export let email = '';
     export let password = '';
 
-    async function login(e) {
-        e.preventDefault()
-        try {
-            const user = await signIn({ variables: { email, password } });
-        } catch (error) {
-            errorMessage = error;
-            mySnackbar.open();
-        }
+    const handleLogin = async () => {
+    const response = await fetch("/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const parsed = await response.json();
+
+    if (parsed.error) {
+      error = parsed.error;
+    } else {
+      $session.token = parsed.token;
+      goto("/");
     }
+  };
 </script>
 
 <form>
@@ -36,7 +44,7 @@
         <Label>{errorMessage}</Label>
     </Snackbar>
 </form>
-<Fab color="primary" style="margin-top: 1em;" extended on:click={e => login(e)}>Sign in</Fab>
+<Fab color="primary" style="margin-top: 1em;" extended on:click={e => handleLogin(e)}>Sign in</Fab>
 <Fab style="margin-top: 1em;" extended on:click={e => goto('/register')}>Register</Fab>
 
 <style lang="scss">

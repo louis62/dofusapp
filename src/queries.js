@@ -7,3 +7,14 @@ export const SIGN_IN = gql(
         }
     }`
 )
+
+export const ME = gql(
+    `query getMyInfos{
+        me{
+            name
+            dragos{
+                name
+            }
+        }
+    }`
+)
