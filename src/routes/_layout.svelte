@@ -3,7 +3,6 @@
 	import client from '../lib/apollo';
 	import { setClient } from "svelte-apollo";
 	setClient(client);
-
 	export let segment;
 </script>
 
