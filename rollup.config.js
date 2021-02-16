@@ -142,18 +142,8 @@ export default {
   },
 
   serviceworker: {
-    input: config.serviceworker.input(),
+    entry: config.serviceworker.entry(),
     output: config.serviceworker.output(),
-    plugins: [
-      resolve(),
-      replace({
-        "process.browser": true,
-        "process.env.NODE_ENV": JSON.stringify(mode)
-      }),
-      commonjs(),
-      !dev && terser()
-    ],
-
-    onwarn
+    mode: process.env.NODE_ENV,
   }
 };
