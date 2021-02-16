@@ -19,4 +19,5 @@ const app = express()
   .listen(PORT, err => {
     if (err) console.log("error", err);
   });
-export default app;
+  
+module.exports = app;
