@@ -8,6 +8,14 @@ mutation signin($email: String, $password: String){
 }
 `
 
+export const SIGN_UP = gql`
+mutation signup($name: String, $email: String, $password: String){
+    signup(name: $name, email:$email, password:$password){
+        token
+    }
+}
+`
+
 
 export const ME = gql`
 query getMyInfos{

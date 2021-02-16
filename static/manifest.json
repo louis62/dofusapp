@@ -4,6 +4,7 @@
   "name": "DofusApp - Gestion de dragos",
   "short_name": "DofusApp",
   "display": "standalone",
+  "Scope": "/",
   "start_url": "/",
   "icons": [
     {
