@@ -27,5 +27,5 @@
 {#await data}
   <p>loading</p>
 {:then me} 
-  <p>Bienvenue {me && me.data.me.id} !</p>
+  <p>Bienvenue {me && me.data.me.name} !</p>
 {/await}
