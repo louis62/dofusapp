@@ -3,7 +3,7 @@ import fetch from 'isomorphic-unfetch';
 
 const cache = new InMemoryCache();
 const link =  createHttpLink({
-    uri: 'https://dofusprisma.herokuapp.com',
+    uri: 'https://prisma.dofusapp.fr',
     credentials: 'same-origin',
     fetch,
 });
