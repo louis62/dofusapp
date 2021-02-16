@@ -109,7 +109,7 @@ export default {
           module: true
         })
     ],
-
+    preserveEntrySignatures: false,
     onwarn
   },
 
