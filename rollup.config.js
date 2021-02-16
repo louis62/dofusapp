@@ -142,7 +142,7 @@ export default {
   },
 
   serviceworker: {
-    entry: config.serviceworker.entry(),
+    input: config.serviceworker.input(),
     output: config.serviceworker.output(),
     mode: process.env.NODE_ENV,
   }
