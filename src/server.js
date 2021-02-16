@@ -10,7 +10,7 @@ const { PORT, NODE_ENV } = process.env;
 const dev = NODE_ENV === "development";
 
 
-express()
+export default express()
   .use(
     compression({ threshold: 0 }),
     sirv("static", { dev }),
