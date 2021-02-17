@@ -1,6 +1,5 @@
 <script>
     import LoginForm from '../components/LoginForm.svelte';
-    export let segment;
 </script>
 
 <svelte:head>

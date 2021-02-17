@@ -2,16 +2,15 @@
 	import Nav from '../components/Nav.svelte';
 	import client from '../lib/apollo';
 	import { setClient } from "svelte-apollo";
-	setClient(client);
 	export let segment;
+	setClient(client);
 </script>
 
 <style lang="scss">
 	@import '.././theme/global.scss';
 </style>
 
-<!-- <Nav {segment}/> -->
-
 <main>
-	<slot {segment} ></slot>
+	<Nav {segment} />
+	<slot></slot>
 </main>

@@ -1,10 +1,9 @@
 <script>
     import RegisterForm from '../components/RegisterForm.svelte';
-    export let segment;
 </script>
 
 <svelte:head>
-	<title>DofusApp - Login</title>
+	<title>DofusApp - Register</title>
 </svelte:head>
 
 <div class="bg">

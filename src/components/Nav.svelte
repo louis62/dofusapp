@@ -5,6 +5,7 @@
 <style lang="scss">
   $test: yellow;
   nav {
+    display: none;
     border-bottom: 1px solid rgba(255, 62, 0, 0.1);
     font-weight: 300;
     padding: 0 1em;
@@ -55,18 +56,13 @@
       <a class={segment === undefined ? 'selected' : ''} href=".">home</a>
     </li>
     <li>
-      <a class={segment === 'about' ? 'selected' : ''} href="about">about</a>
+      <a class={segment === 'register' ? 'selected' : ''} href="register">register</a>
+    </li>
+    <li>
+      <a class={segment === 'login' ? 'selected' : ''} href="login">register</a>
     </li>
 
     <!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
 		     the blog data when we hover over the link or tap it on a touchscreen -->
-    <li>
-      <a
-        rel="prefetch"
-        class={segment === 'blog' ? 'selected' : ''}
-        href="blog">
-        blog
-      </a>
-    </li>
   </ul>
 </nav>

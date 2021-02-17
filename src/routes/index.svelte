@@ -3,16 +3,15 @@
   import { ME } from '../queries';
  
   export async function preload(page, session) {
-    if (typeof window !== 'undefined') {
-      try{
-        const data = await client.query({
-          query: ME
-        })
-        return { data }
-      }catch(error){
-        this.redirect(302, 'login');
-      }
+    try{
+      const data = await client.query({
+        query: ME
+      })
+      return { data }
+    }catch(error){
+      this.redirect(302, 'login');
     }
+    return { data }
   }
 </script> 
  
