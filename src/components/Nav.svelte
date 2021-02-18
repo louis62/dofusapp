@@ -2,8 +2,8 @@
   export let segment;
 </script>
 
-<style lang="scss">
-  $test: yellow;
+<style>
+  
   nav {
     display: none;
     border-bottom: 1px solid rgba(255, 62, 0, 0.1);
@@ -38,7 +38,7 @@
     content: "";
     width: calc(100% - 1em);
     height: 2px;
-    background-color: $test;
+    background-color: yellow;
     display: block;
     bottom: -1px;
   }

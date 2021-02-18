@@ -1,16 +1,21 @@
 <script>
-	import Nav from '../components/Nav.svelte';
 	import client from '../lib/apollo';
 	import { setClient } from "svelte-apollo";
-	export let segment;
 	setClient(client);
+	export let segment;
+	segment = segment;
 </script>
 
-<style lang="scss">
-	@import '.././theme/global.scss';
-</style>
-
 <main>
-	<Nav {segment} />
 	<slot></slot>
 </main>
+<style>
+main {
+    height: 100vh;
+    position: relative;
+    width: 100vw;
+    background-color: #d8e9f0;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+</style>

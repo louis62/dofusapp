@@ -1,6 +1,6 @@
 <script>
   import Textfield from '@smui/textfield';
-  import CommonIcon from '@smui/common/Icon';
+  import {Icon as CommonIcon} from '@smui/common';
   import Snackbar, { Label } from '@smui/snackbar';
   import { mutation } from 'svelte-apollo';
   import Fab from '@smui/fab';

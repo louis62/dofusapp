@@ -1,6 +1,6 @@
 <script>
   import Textfield from '@smui/textfield';
-  import CommonIcon from '@smui/common/Icon';
+  import {Icon as CommonIcon} from '@smui/common';
   import Snackbar, { Label } from '@smui/snackbar';
   import { mutation } from 'svelte-apollo';
   import Fab from '@smui/fab';
@@ -27,7 +27,6 @@
       }
   }
 </script>
-
 <form>
   <Textfield class="mdc-text-field--fullwidth" bind:value={name} label="" type="text">
     <span slot="label"><CommonIcon class="material-icons" style="font-size: 1em; line-height: normal; vertical-align: middle;">person</CommonIcon> Pseudo</span>
