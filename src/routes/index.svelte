@@ -1,46 +1,32 @@
-<style>
-	h1, figure, p {
-		text-align: center;
-		margin: 0 auto;
-	}
+<script context="module">
+  import client from '../lib/apollo';
+  import { ME } from '../queries';
+ 
+  export async function preload(page, session) {
+    if (typeof window !== 'undefined') {
+      try{
+        const data = await client.query({
+          query: ME
+        })
+        return { data }
+      }catch(error){
+        this.redirect(302, 'login');
+      }
+      return { data }
+    }
+  }
+</script> 
+ 
+<script>
+  import { setClient } from 'svelte-apollo';
+ 
+  export let data;
 
-	h1 {
-		font-size: 2.8em;
-		text-transform: uppercase;
-		font-weight: 700;
-		margin: 0 0 0.5em 0;
-	}
-
-	figure {
-		margin: 0 0 1em 0;
-	}
-
-	img {
-		width: 100%;
-		max-width: 400px;
-		margin: 0 0 1em 0;
-	}
-
-	p {
-		margin: 1em auto;
-	}
-
-	@media (min-width: 480px) {
-		h1 {
-			font-size: 4em;
-		}
-	}
-</style>
-
-<svelte:head>
-	<title>Sapper project template</title>
-</svelte:head>
-
-<h1>Great success!</h1>
-
-<figure>
-	<img alt='Borat' src='great-success.png'>
-	<figcaption>HIGH FIVE!</figcaption>
-</figure>
-
-<p><strong>Try editing this file (src/routes/index.svelte) to test live reloading.</strong></p>
+  setClient(client);
+ 
+</script>
+{#await data}
+  <p>loading</p>
+{:then me} 
+  <p>Bienvenue {me && me.data.me.name} !</p>
+{/await}
