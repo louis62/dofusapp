@@ -10,12 +10,5 @@
 	<slot></slot>
 </main>
 <style>
-main {
-    height: 100vh;
-    position: relative;
-    width: 100vw;
-    background-color: #d8e9f0;
-    margin: 0 auto;
-    box-sizing: border-box;
-}
+    @import '../theme/global.scss';
 </style>
