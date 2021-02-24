@@ -10,10 +10,16 @@ import { terser } from 'rollup-plugin-terser';
 import config from 'sapper/config/rollup.js';
 import pkg from './package.json';
 const { preprocess } = require('./svelte.config.js');
+import dotenv from 'dotenv';
+
+dotenv.config()
 
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
+const databaseUrl = process.env.DATABASE_URL;
+const secretKey = process.env.SECRET_KEY;
+const prismaEndpoint = process.env.PRISMA_ENDPOINT;
 
 const onwarn = (warning, onwarn) =>
 	(warning.code === 'MISSING_EXPORT' && /'preload'/.test(warning.message)) ||
@@ -27,7 +33,10 @@ export default {
 		plugins: [
 			replace({
 				'process.browser': true,
-				'process.env.NODE_ENV': JSON.stringify(mode)
+				'process.env.NODE_ENV': JSON.stringify(mode),
+				'process.env.DATABASE_URL': JSON.stringify(databaseUrl),
+				'process.env.SECRET_KEY': JSON.stringify(secretKey),
+				'process.env.PRISMA_ENDPOINT': JSON.stringify(prismaEndpoint)
 			}),
 			svelte({
 				preprocess,
@@ -90,7 +99,10 @@ export default {
 		plugins: [
 			replace({
 				'process.browser': false,
-				'process.env.NODE_ENV': JSON.stringify(mode)
+				'process.env.NODE_ENV': JSON.stringify(mode),
+				'process.env.DATABASE_URL': JSON.stringify(databaseUrl),
+				'process.env.SECRET_KEY': JSON.stringify(secretKey),
+				'process.env.PRISMA_ENDPOINT': JSON.stringify(prismaEndpoint)
 			}),
 			svelte({
 				preprocess,
@@ -138,7 +150,10 @@ export default {
 			resolve(),
 			replace({
 				'process.browser': true,
-				'process.env.NODE_ENV': JSON.stringify(mode)
+				'process.env.NODE_ENV': JSON.stringify(mode),
+				'process.env.DATABASE_URL': JSON.stringify(databaseUrl),
+				'process.env.SECRET_KEY': JSON.stringify(secretKey),
+				'process.env.PRISMA_ENDPOINT': JSON.stringify(prismaEndpoint)
 			}),
 			commonjs(),
 			!dev && terser()

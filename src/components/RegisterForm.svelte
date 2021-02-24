@@ -4,9 +4,10 @@
   import Snackbar, { Label } from '@smui/snackbar';
   import { mutation } from 'svelte-apollo';
   import Fab from '@smui/fab';
-  import { goto } from '@sapper/app';
+  import { goto, stores } from '@sapper/app';
   import { SIGN_UP } from "../queries";
   const signUp = mutation(SIGN_UP)
+  const { session } = stores()
   let mySnackbar;
   export let errorMessage = '';
   export let name = '';
@@ -19,8 +20,10 @@
         if(passwordBis !== password ){
           throw new Error("Passwords not matching")
         }
-        await signUp({ variables: { name, email, password } });
-        goto('/')
+        const response = await signUp({ variables: { name, email, password } });
+        const { user } = response.data.signup
+        $session.user = user
+        location.href = '/'
       } catch (error) {
           errorMessage = error;
           mySnackbar.open();
@@ -45,7 +48,7 @@
   </Snackbar>
 </form>
 <Fab color="primary" style="margin-top: 1em;" extended on:click={e => register(e)}>Register</Fab>
-<Fab style="margin-top: 1em;" extended on:click={e => goto('/login')}>Sign in</Fab>
+<Fab style="margin-top: 1em;" extended on:click={() => goto('/login')}>Sign in</Fab>
 
 <style lang="scss">
 * :global(.mdc-text-field) {
