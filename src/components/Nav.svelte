@@ -11,8 +11,7 @@
   async function logout() {
       try {
           await signOut();
-          $session.user = undefined
-          location.href = '/login'
+          session.set({});
         } catch (error) {
           console.log(error)
       }
