@@ -4,9 +4,10 @@
   import Snackbar, { Label } from '@smui/snackbar';
   import { mutation } from 'svelte-apollo';
   import Fab from '@smui/fab';
-  import { goto } from '@sapper/app';
+  import { goto, stores } from '@sapper/app';
   import { SIGN_IN } from "../queries";
   const signIn = mutation(SIGN_IN)
+  const { session } = stores()
   let mySnackbar;
   export let errorMessage = '';
   export let email = '';
@@ -14,9 +15,11 @@
   async function login(e) {
       e.preventDefault()
       try {
-          await signIn({ variables: { email, password } });
-          goto('/')
-      } catch (error) {
+          const response = await signIn({ variables: { email, password } });
+          const { user } = response.data.login
+          $session.user = user
+          location.href = '/'
+        } catch (error) {
           errorMessage = error;
           mySnackbar.open();
       }
@@ -35,7 +38,7 @@
   </Snackbar>
 </form>
 <Fab color="primary" style="margin-top: 1em;" extended on:click={e => login(e)}>Sign in</Fab>
-<Fab style="margin-top: 1em;" extended on:click={e => goto('/register')}>Register</Fab>
+<Fab style="margin-top: 1em;" extended on:click={() => goto('/register')}>Register</Fab>
 
 <style lang="scss">
 * :global(.mdc-text-field) {
