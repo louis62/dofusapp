@@ -25,7 +25,7 @@
         align-items: center;
         .wrapper{
             flex-wrap: wrap;
-            min-width: 30vw;
+            min-width: 35vw;
             max-width: 80vw;
             .form__wrapper{
                 background: $secondary;

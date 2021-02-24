@@ -37,8 +37,8 @@
       <Label>{errorMessage}</Label>
   </Snackbar>
 </form>
-<Fab color="primary" style="margin-top: 1em;" extended on:click={e => login(e)}>Sign in</Fab>
-<Fab style="margin-top: 1em;" extended on:click={() => goto('/register')}>Register</Fab>
+<Fab color="primary" style="margin-top: 1em;" extended on:click={e => login(e)}>Se connecter</Fab>
+<Fab style="margin-top: 1em;" extended on:click={() => goto('/register')}>S'enregistrer</Fab>
 
 <style lang="scss">
 * :global(.mdc-text-field) {
