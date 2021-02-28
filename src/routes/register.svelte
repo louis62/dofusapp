@@ -1,9 +1,9 @@
 <script>
-    import RegisterForm from '../components/RegisterForm.svelte';
+    import RegisterForm from '../components/RegisterForm.svelte'
 </script>
 
 <svelte:head>
-	<title>DofusApp - Register</title>
+    <title>DofusApp - Register</title>
 </svelte:head>
 
 <div class="bg">
@@ -15,25 +15,24 @@
 </div>
 
 <style scoped>
-    @import ".././theme/variables.scss";
+    @import '.././theme/variables.scss';
     .bg {
-        min-height: 100%;
+        min-height: 100vh;
         width: 100%;
         background-color: $primary;
         display: flex;
         justify-content: center;
         align-items: center;
-        .wrapper{
+        .wrapper {
             flex-wrap: wrap;
             min-width: 35vw;
             max-width: 80vw;
-            .form__wrapper{
+            .form__wrapper {
                 background: $secondary;
                 border-radius: 20px;
                 margin-top: -3em;
                 background: #33425b;
-                box-shadow:  5px 5px 10px #303e56,
-                            -5px -5px 10px #364660;
+                box-shadow: 5px 5px 10px #303e56, -5px -5px 10px #364660;
                 padding: 1em;
             }
         }

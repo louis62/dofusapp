@@ -4,9 +4,8 @@
 
 
 main {
-    height: 100vh;
+    min-height: 100vh;
     position: relative;
-    width: 100vw;
     background-color: $secondary;
     margin: 0 auto;
     box-sizing: border-box;

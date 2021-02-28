@@ -1,12 +1,13 @@
 <div class="loading__wrapper">
     <div class="loading">
-        <img src="parcho.png" alt="loader"/>
+        <img src="parcho.png" alt="loader" />
     </div>
 </div>
+
 <style>
     @import '.././theme/variables.scss';
 
-    @keyframes spinner{
+    @keyframes spinner {
         0% {
             transform: rotate(0deg);
         }
@@ -18,9 +19,11 @@
         }
     }
     .loading__wrapper {
-        display:flex;
-        width: 100%;
-        height: 100%;
+        display: flex;
+        position: absolute;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
         background: darken($primary, 10);
         justify-content: center;
         align-items: center;

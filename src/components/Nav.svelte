@@ -21,12 +21,11 @@
 <style scoped>
   @import '.././theme/variables.scss';
   nav{
-    width: 85%;
+    width: 100%;
     display: flex;
     justify-content: center;
     margin: auto;
     height: 15vh;
-    border-radius: 25px;
     background: $secondary;
     box-shadow:  5px 5px 10px #d2e2e9,
                 -5px -5px 10px #def0f7;
@@ -38,14 +37,20 @@
       padding-inline-start: 0;
       margin: 0;
       li{
+        display: flex;
         list-style-type: none;
         text-align: center;
+        align-items: center;
+        flex-wrap: wrap;
+        flex-basis: 230px;
+        height: 100%;
         div {
           position: relative;
+          display: flex;
+          align-items: center;
+          justify-content:center;
           background: $primary;
           height: 100%;
-          border-top-left-radius: 25px;
-          border-bottom-left-radius: 25px;
           img{
             width: 80%;
             text-align: center;
@@ -70,6 +75,11 @@
       }
     }
   }
+  @media screen and (max-width: '580px'){
+    h2,hr{
+      display:none;
+    }
+  }
 </style>
 
 {#if $session.authenticated && !blackList.includes(segment)}
@@ -77,7 +87,7 @@
   <ul>
     <li>
       <div>
-        <img src="logo-144.png" />
+        <img src="logo-144.png" alt="DofusApp"/>
       </div>
     </li>
     <li>

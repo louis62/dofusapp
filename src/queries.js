@@ -30,6 +30,33 @@ mutation signout{
 }
 `
 
+export const CREATE_ONE_DRAGOTURKEY = gql`
+mutation createOneDragoTurkey($data: DragoTurkeyCreateInput!){
+    createOneDragoTurkey(data: $data){
+        name,
+        type {
+            name
+        }
+    }
+}
+`
+
+export const UPDATE_ONE_DRAGOTURKEY = gql`
+mutation updateOneDragoTurkey($data: DragoTurkeyUpdateInput! $where: DragoTurkeyWhereUniqueInput!){
+    updateOneDragoTurkey(data: $data, where: $where){
+        name
+        gender
+        type {
+            name
+            imageName
+        }
+        fecund
+        pregnant
+        behaviour
+    }
+}
+`
+
 
 export const ME = gql`
 query getMyInfos{
@@ -39,6 +66,50 @@ query getMyInfos{
         dragos{
             name
         }
+    }
+}
+`
+
+export const GET_MY_DRAGOS = gql`
+query getMyDragos($where: DragoTurkeyWhereInput){
+    userDragos(where:$where){
+        id
+        name
+        gender
+        type {
+            name
+            imageName
+        }
+    }
+}
+`
+
+export const GET_ONE_DRAGO = gql`
+query getOneDragos($id: Int!){
+    dragoTurkey(id: $id){
+        id
+        name
+        gender
+        type {
+            name
+            imageName
+        }
+        fecund
+        pregnant
+        behaviour
+        storage
+        city
+        object
+    }
+}
+`
+
+
+export const GET_DRAGOTYPES = gql`
+query getDragotypes{
+    dragoTypes{
+        name
+        imageName
     }
 }
 `
